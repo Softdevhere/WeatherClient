@@ -127,6 +127,7 @@ public class MainActivity extends ActionBarActivity {
 
         } else {
             Toast.makeText(this, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+            //testting github
         }
     }
 
