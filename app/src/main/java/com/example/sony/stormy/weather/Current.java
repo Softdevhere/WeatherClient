@@ -1,4 +1,6 @@
-package com.example.sony.stormy;
+package com.example.sony.stormy.weather;
+
+import com.example.sony.stormy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +9,7 @@ import java.util.TimeZone;
 /**
  * Created by SONY on 07.08.2015.
  */
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private long mTime;
     private double mTemperature;

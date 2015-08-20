@@ -1,10 +1,12 @@
-package com.example.sony.stormy;
+package com.example.sony.stormy.UI;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.example.sony.stormy.R;
 
 /**
  * Created by SONY on 02.08.2015.
