@@ -1,6 +1,7 @@
 package com.example.sony.stormy.UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -34,6 +35,7 @@ import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -58,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
         mProgressBar.setVisibility(View.INVISIBLE);
         mRefreshImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,6 +250,13 @@ public class MainActivity extends ActionBarActivity {
     private void alertUserAboutError() {
         AlertDialogFragment dialog = new AlertDialogFragment();
         dialog.show(getFragmentManager(),"error_dialog");
+
+    }
+
+    @OnClick (R.id.dailyButton)
+    public void startDailyActivity(View view){
+        Intent intent = new Intent(this, DailyForecastActivity.class);
+        startActivity(intent);
 
     }
 
