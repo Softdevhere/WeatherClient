@@ -44,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
     private Forecast mForecast;
     private double mLatitude = 37.8267;
     private double mLongitude = -122.423;
+    public static final  String DAILY_FORECAST = "DAILY_FORECAST";
     @Bind(R.id.timeLabel) TextView mTimeLabel;
     @Bind(R.id.temperatureLabel) TextView mTemperatureLabel;
     @Bind(R.id.humidityValue) TextView mHumidityValue;
@@ -256,7 +257,9 @@ public class MainActivity extends ActionBarActivity {
     @OnClick (R.id.dailyButton)
     public void startDailyActivity(View view){
         Intent intent = new Intent(this, DailyForecastActivity.class);
+        intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
         startActivity(intent);
+
 
     }
 
