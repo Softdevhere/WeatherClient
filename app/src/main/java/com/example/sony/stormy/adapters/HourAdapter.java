@@ -1,14 +1,18 @@
 package com.example.sony.stormy.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sony.stormy.R;
+import com.example.sony.stormy.UI.HourlyForecastActivity;
 import com.example.sony.stormy.weather.Hour;
 
 import java.util.zip.Inflater;
@@ -21,15 +25,13 @@ import butterknife.ButterKnife;
  */
 public class HourAdapter extends RecyclerView.Adapter <HourAdapter.HourViewHolder> {
     Hour[] mHours;
+    Context mContext;
 
-    public HourAdapter(Hour[] hours){
+    public HourAdapter(Context context,Hour[] hours){
+        mContext = context;
         mHours=hours;
 
     }
-
-
-
-
 
     @Override
     public HourViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -51,7 +53,7 @@ public class HourAdapter extends RecyclerView.Adapter <HourAdapter.HourViewHolde
         return mHours.length;
     }
 
-    public class HourViewHolder extends RecyclerView.ViewHolder{
+    public class HourViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         /*private TextView mTimeLabel;
         private TextView mSummaryLabel;
         private ImageView mIconImageView;
@@ -71,6 +73,7 @@ public class HourAdapter extends RecyclerView.Adapter <HourAdapter.HourViewHolde
             mTemperatureLabel = (TextView) itemView.findViewById(R.id.temperatureLabel);
             */
            ButterKnife.bind(this,itemView);
+            itemView.setOnClickListener(this);
         }
 
         public void bindHour(Hour hour){
@@ -81,6 +84,17 @@ public class HourAdapter extends RecyclerView.Adapter <HourAdapter.HourViewHolde
             mIconImageView.setImageResource(hour.getIconId());
 
 
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            String time = mTimeLabel.getText().toString();
+            String temperature = mTemperatureLabel.getText().toString();
+            String summary=mSummaryLabel.getText().toString();
+            String message = String.format("At %s it will be %s and %s", time, temperature, summary);
+            Toast toast = Toast.makeText(mContext, message, Toast.LENGTH_LONG);
+            toast.show();
 
         }
     }
